@@ -15,16 +15,39 @@ void main() {
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const TestApp());
+    expect(find.text('Item 5').hitTestable(), findsOneWidget);
   });
+
   testWidgets('Ensure there\'s 10 `Item X` widgets',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const TestApp());
+    final textWidgets =
+        tester.widgetList(find.textContaining('Item')).cast<Text>().toList();
+
+    expect(textWidgets.length, 10);
   });
+
   testWidgets(
       'Ensure the number X in elements `Item X` is growing: Item 1, Item 2, Item 3, etc',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const TestApp());
+    final textWidgets =
+        tester.widgetList(find.textContaining('Item')).cast<Text>().toList();
+
+    expect(
+      textWidgets.map((e) => e.data),
+      List.generate(textWidgets.length, (i) => 'Item ${i + 1}'),
+    );
+
+    // OR
+
+    for (var i = 0; i < textWidgets.length; i++) {
+      expect(
+        textWidgets[i].data,
+        'Item ${i + 1}',
+      );
+    }
   });
 }
