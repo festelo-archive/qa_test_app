@@ -14,17 +14,17 @@ void main() {
   testWidgets('Ensure there\'s a widget with text `Item 5`',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const TestPage());
+    await tester.pumpWidget(const TestApp());
   });
   testWidgets('Ensure there\'s 10 `Item X` widgets',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const TestPage());
+    await tester.pumpWidget(const TestApp());
   });
   testWidgets(
       'Ensure the number X in elements `Item X` is growing: Item 1, Item 2, Item 3, etc',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const TestPage());
+    await tester.pumpWidget(const TestApp());
   });
 }
